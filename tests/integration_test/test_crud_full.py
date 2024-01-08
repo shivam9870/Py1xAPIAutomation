@@ -1,14 +1,16 @@
 # here we write the test cases for full CRUD Operation
 
 from src.constants.api_constants import APIConstants
-from src.helpers.api_requests_wrapper import post_request, put_request
+from src.helpers.api_requests_wrapper import post_request, put_request, delete_request
 from src.helpers.common_verification import verify_response_key_should_not_be_none, verify_http_status_code
 from src.helpers.payload_manager import payload_create_booking, payload_create_token, payload_update_booking
 from src.helpers.utils import common_headers_json
+import pytest
 
 
 class TestCreateBooking(object):
-    def test_create_token(self):
+    @pytest.fixture()
+    def create_token(self):
         response = post_request(url=APIConstants.create_token(), auth=None,
                                 headers=common_headers_json(),
                                 payload=payload_create_token(),
@@ -19,7 +21,8 @@ class TestCreateBooking(object):
         verify_response_key_should_not_be_none(token)
         return token
 
-    def test_create_booking(self):
+    @pytest.fixture()
+    def create_booking(self):
         # we need urls, headers, payloads
         response = post_request(url=APIConstants.url_create_booking(), auth=None, headers=common_headers_json()
                                 , payload=payload_create_booking(), in_json=False)
@@ -30,13 +33,16 @@ class TestCreateBooking(object):
         verify_http_status_code(response, 200)
         return bookingid
 
-    def test_update_booking(self):  # to update we need booking ID and token
-        token = "9299bfff56ad0d1"
-        put_url = APIConstants.url_create_booking() + "/881"
+    def test_update_booking(self,create_token,create_booking):  # to update we need booking ID and token
+        bookingid = create_booking
         auth = ("admin", "password123")
-        response = put_request(url=put_url, auth=auth, headers=common_headers_json()
-                               , payload=payload_update_booking(), in_json=False)
-        print(response) 
+        put_url= APIConstants.url_create_booking() + "/" + str(bookingid)
+        response= put_request(url=put_url,headers=common_headers_json(),auth=auth,
+                              payload=payload_update_booking(),in_json=False)
+        print(response.json())
+
 
     def test_delete_booking(self):  # to update we need booking ID and token
-        pass
+        auth = ("admin", "password123")
+        response = delete_request(url=APIConstants.url_put_patch_delete_booking(), auth=auth,
+                                  payload=None, in_json=False)
