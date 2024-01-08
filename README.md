@@ -22,7 +22,8 @@ Hybrid Custom Framework to Test REST APIs
 ## To install the freeze version
 ``pip install -r requirments.txt`` 
 
-``pip install pytest-xdist`` = for parallel test_case execution 
+### For parallel test_case execution = ``pip install pytest-xdist``  
 
-``pytest -n auto tests/integration_test/test_create_booking.py -s -v``
+### Code running command =``pytest -n auto tests/integration_test/test_create_booking.py -s -v``
 
+### To work with excel file = ``pip install openpyxl``
