@@ -3,7 +3,6 @@
 import json
 
 import requests
-from requests import Response
 
 
 def get_request(url, auth, in_json):

@@ -1,9 +1,6 @@
-import pytest
-
 from src.constants.api_constants import APIConstants
 from src.helpers.api_requests_wrapper import post_request
-from src.helpers.common_verification import verify_response_key_should_not_be_none, verify_http_status_code
-from src.helpers.payload_manager import payload_create_booking
+from src.helpers.common_verification import verify_http_status_code
 from src.helpers.utils import common_headers_json
 
 
