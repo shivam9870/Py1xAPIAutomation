@@ -1,0 +1,132 @@
+{
+    "$schema": "https://json-schema.org/draft/2019-09/schema",
+    "$id": "http://example.com/example.json",
+    "title": "Root Schema",
+    "type": "object",
+    "default": {},
+    "required": [
+        "bookingid",
+        "booking"
+    ],
+    "properties": {
+        "bookingid": {
+            "title": "The bookingid Schema",
+            "type": "integer",
+            "default": 0,
+            "examples": [
+                2339
+            ]
+        },
+        "booking": {
+            "title": "The booking Schema",
+            "type": "object",
+            "default": {},
+            "required": [
+                "firstname",
+                "lastname",
+                "totalprice",
+                "depositpaid",
+                "bookingdates",
+                "additionalneeds"
+            ],
+            "properties": {
+                "firstname": {
+                    "title": "The firstname Schema",
+                    "type": "string",
+                    "default": "",
+                    "examples": [
+                        "Jim"
+                    ]
+                },
+                "lastname": {
+                    "title": "The lastname Schema",
+                    "type": "string",
+                    "default": "",
+                    "examples": [
+                        "Brown"
+                    ]
+                },
+                "totalprice": {
+                    "title": "The totalprice Schema",
+                    "type": "integer",
+                    "default": 0,
+                    "examples": [
+                        111
+                    ]
+                },
+                "depositpaid": {
+                    "title": "The depositpaid Schema",
+                    "type": "boolean",
+                    "default": "False",
+                    "examples": [
+                        "True"
+                    ]
+                },
+                "bookingdates": {
+                    "title": "The bookingdates Schema",
+                    "type": "object",
+                    "default": {},
+                    "required": [
+                        "checkin",
+                        "checkout"
+                    ],
+                    "properties": {
+                        "checkin": {
+                            "title": "The checkin Schema",
+                            "type": "string",
+                            "default": "",
+                            "examples": [
+                                "2018-01-01"
+                            ]
+                        },
+                        "checkout": {
+                            "title": "The checkout Schema",
+                            "type": "string",
+                            "default": "",
+                            "examples": [
+                                "2019-01-01"
+                            ]
+                        }
+                    },
+                    "examples": [{
+                        "checkin": "2018-01-01",
+                        "checkout": "2019-01-01"
+                    }]
+                },
+                "additionalneeds": {
+                    "title": "The additionalneeds Schema",
+                    "type": "string",
+                    "default": "",
+                    "examples": [
+                        "Breakfast"
+                    ]
+                }
+            },
+            "examples": [{
+                "firstname": "Jim",
+                "lastname": "Brown",
+                "totalprice": 111,
+                "depositpaid": "True",
+                "bookingdates": {
+                    "checkin": "2018-01-01",
+                    "checkout": "2019-01-01"
+                },
+                "additionalneeds": "Breakfast"
+            }]
+        }
+    },
+    "examples": [{
+        "bookingid": 2339,
+        "booking": {
+            "firstname": "Jim",
+            "lastname": "Brown",
+            "totalprice": 111,
+            "depositpaid": "True",
+            "bookingdates": {
+                "checkin": "2018-01-01",
+                "checkout": "2019-01-01"
+            },
+            "additionalneeds": "Breakfast"
+        }
+    }]
+}

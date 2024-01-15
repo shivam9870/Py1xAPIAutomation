@@ -35,4 +35,5 @@ Hybrid Custom Framework to Test REST APIs
 
 > ``pytest tests/datadriventesting/test_ddt.py -s -v --alluredir=./reports``
 
-
+### To work with JSON SCHEMA
+``pip install jsonschema``
