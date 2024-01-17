@@ -4,7 +4,7 @@ import pytest
 from src.constants.api_constants import APIConstants
 from src.helpers.api_requests_wrapper import post_request
 from src.helpers.common_verification import verify_response_key_should_not_be_none, verify_http_status_code
-from src.helpers.payload_manager import payload_create_booking_dyanamic
+from src.helpers.payload_manager import *
 from src.helpers.utils import common_headers_json
 
 
@@ -13,7 +13,7 @@ class TestCreateBooking(object):
     def test_create_booking_tc1(self):
         # we need urls, headers, payloads
         response = post_request(url=APIConstants.url_create_booking(), auth=None, headers=common_headers_json()
-                                , payload=payload_create_booking_dyanamic(), in_json=False)
+                                , payload=payload_create_booking(), in_json=False)
         print(response)
         bookingid = response.json()["bookingid"]
         print(bookingid)
