@@ -43,7 +43,9 @@ class TestCreateBooking(object):
                                payload=payload_update_booking(), in_json=False)
         print(response.json())
 
-    def test_delete_booking(self):  # to update we need booking ID and token
+    def test_delete_booking(self,create_booking):  # to update we need booking ID and token
+        bookingid= create_booking
         auth = ("admin", "password123")
-        response = delete_request(url=APIConstants.url_put_patch_delete_booking(), auth=auth,
-                                  payload=None, in_json=False)
+        delete_url= APIConstants.url_create_booking() + "/" + str(bookingid)
+        response = delete_request(url=delete_url, auth=auth,
+                                  payload=None,headers=common_headers_json(), in_json=False)
